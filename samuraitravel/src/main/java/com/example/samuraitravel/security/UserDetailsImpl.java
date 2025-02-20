@@ -50,6 +50,7 @@ public class UserDetailsImpl implements UserDetails{
 		return true;
 	}
 	
+	//ユーザーのパスワードが期限切れでなければtrueを返す
 	@Override
 	public boolean isCredentialsNonExpired() {
 		return true;
