@@ -30,10 +30,10 @@ public class Role {
 	@Column(name = "postal_code")
 	private String postalCode;
 	
-	@Column(name = "adderess")
+	@Column(name = "address")
 	private String address;
 	
-	@Column(name = "phone?number")
+	@Column(name = "phone_number")
 	private String phoneNumber;
 	
 	@Column(name = "email")
