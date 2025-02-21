@@ -11,11 +11,10 @@
 	<title>samurai Travel</title>
 </head>
 
-<div>
-	<p>Hello, world!</p>
-	<div class="samuraitravel-wrapper"></div>
+<body>
+	<div class="samuraitravel-wrapper">
 	<!--　ヘッダー　-->
-	<div th:replace="~{fragment ::header}"></div>
+	<div th:replace="~{fragment :: header}"></div>
 	<main>
 		<div class="container pt-4 pb-5 samuraitravel-container">
 			<div th:if="${param.loggedIn}" class="alert alert-info">
@@ -30,7 +29,7 @@
 
 	<!-- フッター　-->
 	<div th:replace="~{fragment :: footer}"></div>
-</div>
+</body>
 
 <div th:replace="~{fragment :: scripts}"></div>
 </body>
