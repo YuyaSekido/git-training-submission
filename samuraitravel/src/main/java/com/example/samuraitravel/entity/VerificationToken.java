@@ -13,7 +13,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name = "varification_tokens")
+@Table(name = "verification_tokens")
 @Data
 public class VerificationToken {
 	@Id
@@ -31,6 +31,6 @@ public class VerificationToken {
 	@Column(name = "created_at", insertable = false, updatable = false)
 	private Timestamp createdAt;
 	
-	@Column(name = "updated_ at", insertable = false, updatable = false)
+	@Column(name = "updated_at", insertable = false, updatable = false)
 	private Timestamp updatedAt;
 }

@@ -28,7 +28,7 @@ public class SignupEventListener {
 		
 		String recipientAddress = user.getEmail();
 		String subject = "メール認証";
-		String confirmationUrl = signupEvent.getRequestUrl()  + "/varify?token=" + token;
+		String confirmationUrl = signupEvent.getRequestUrl()  + "/verify?token=" + token;
 		String message = "以下のリンクをクリックして会員登録を完了してください。";
 		
 		SimpleMailMessage mailMessage = new SimpleMailMessage();
