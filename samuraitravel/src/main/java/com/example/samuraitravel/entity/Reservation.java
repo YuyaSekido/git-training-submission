@@ -31,7 +31,7 @@ public class Reservation {
 	private User user;
 	
 	@Column(name = "checkin_date")
-	private LocalDate checinDate;
+	private LocalDate checkinDate;
 	
 	@Column(name = "checkout_date")
 	private LocalDate checkoutDate;
