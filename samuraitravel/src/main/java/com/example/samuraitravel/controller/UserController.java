@@ -23,48 +23,49 @@ import com.example.samuraitravel.service.UserService;
 public class UserController {
 	private final UserRepository userRepository;
 	private final UserService userService;
-	
-	
+
 	public UserController(UserRepository userRepository, UserService userService) {
 		this.userRepository = userRepository;
 		this.userService = userService;
-		
+
 	}
-	
+
 	@GetMapping
 	public String index(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, Model model) {
 		User user = userRepository.getReferenceById(userDetailsImpl.getUser().getId());
-		
+
 		model.addAttribute("user", user);
-		
+
 		return "user/index";
 	}
-	
+
 	@GetMapping("/edit")
 	public String edit(@AuthenticationPrincipal UserDetailsImpl userDetailsImpl, Model model) {
 		User user = userRepository.getReferenceById(userDetailsImpl.getUser().getId());
-		UserEditForm userEditForm = new UserEditForm(user.getId(), user.getName(), user.getFurigana(), user.getPostalCode(), user.getAddress(), user.getPhoneNumber(), user.getEmail());
-		
+		UserEditForm userEditForm = new UserEditForm(user.getId(), user.getName(), user.getFurigana(),
+				user.getPostalCode(), user.getAddress(), user.getPhoneNumber(), user.getEmail());
+
 		model.addAttribute("userEditForm", userEditForm);
-		
+
 		return "user/edit";
 	}
-	
+
 	@PostMapping("/update")
-	public String update(@ModelAttribute @Validated UserEditForm userEditForm, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	public String update(@ModelAttribute @Validated UserEditForm userEditForm, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes) {
 		//メールアドレスが変更されており、かつ登録済みであれば、BindingResultオブジェクトエラー内容を追加する
-		if(userService.isEmailChanged(userEditForm) && userService.isEmailRegistered(userEditForm.getEmail())) {
+		if (userService.isEmailChanged(userEditForm) && userService.isEmailRegistered(userEditForm.getEmail())) {
 			FieldError fieldError = new FieldError(bindingResult.getObjectName(), "email", "すでに登録ずみのメールアドレスです。");
 			bindingResult.addError(fieldError);
 		}
-		
-		if(bindingResult.hasErrors()) {
+
+		if (bindingResult.hasErrors()) {
 			return "user/edit";
 		}
-		
+
 		userService.update(userEditForm);
 		redirectAttributes.addFlashAttribute("successMessage", "会員情報を編集しました。");
 
-			return "redirect:/user";
+		return "redirect:/user";
 	}
 }
