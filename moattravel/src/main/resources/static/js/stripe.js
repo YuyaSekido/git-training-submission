@@ -3,6 +3,6 @@ const paymentButton = document.querySelictor('#paymentButton');
 
 peymentButton.addEventListener('click', () => {
 	stripe.redirectToCheckout({
-		sessionId: sesiionId
+		sessionId: sessionId
 	})
 });
