@@ -54,16 +54,6 @@
 								</div>
 
 								<div class="col">
-									<span th:tet="${user.getFurigana()}"></span>
-								</div>
-							</div>
-							
-							<div class="row pb-2 mb-2 border-bottom">
-								<div class="col-4">
-									<span class="fw-bold">フリガナ</span>
-								</div>
-								
-								<div class="col">
 									<span th:text="${user.getFurigana()}"></span>
 								</div>
 							</div>
@@ -104,7 +94,7 @@
 								</div>
 								
 								<div class="col">
-									<span th:text="${user,getEmail()}"></span>
+									<span th:text="${user.getEmail()}"></span>
 								</div>
 							</div>
 						</div>
