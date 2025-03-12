@@ -72,7 +72,7 @@ public class HouseController {
 	
 	@GetMapping("/{id}")
 	public String show(@PathVariable(name = "id") Integer id, Model model) {
-		House house =houseRepository.getReferenceById(id);
+		House house = houseRepository.getReferenceById(id);
 		
 		model.addAttribute("house", house);
 		model.addAttribute("reservationInputForm", new ReservationInputForm());
